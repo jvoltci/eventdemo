@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent</title>
+</head>
+<body>
+    <div style="height: 45vh; display: flex; justify-content: center; align-items: center; font-weight:  bold; font-size: 50px;">
+        <p id="write">Eduvanz (Parent)</p>
+    </div>
+    <div style="height: 45vh; display:  flex; justify-content: center; width: 100%;">
+        <iframe height="100%" width="100%" src="https://extdev.tartanhq.com/?tkn=wmrzylwk&companyId=tartan"></iframe>
+    </div>
+    <script>
+        //window.addEventListener('message', (e) => alert(e.data))
+        window.addEventListener('message', (e) => {
+           alert(e.data.status)
+        })
+    </script>
+</body>
+</html>

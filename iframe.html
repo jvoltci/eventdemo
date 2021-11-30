@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFrame Child</title>
+</head>
+
+<script>
+    const firePageLoad = () => {
+        window.parent.postMessage({ status: "Loading", color: "orange" }, "*")
+    }
+    const fireInProgress = () => {
+        window.parent.postMessage({ status: "In Progress", color: "blue" }, "*")
+    }
+    const fireSuccess = () => {
+        window.parent.postMessage({ status: "Success", color: "green" }, "*")
+    }
+    const fireFail = () => {
+        window.parent.postMessage({ status: "Fail", color: "red" }, "*")
+    }
+</script>
+
+<body>
+    <div
+        style="display: flex; justify-content: space-around; border: solid 2px black; height: 90vh; align-items: center;">
+        <div onclick="firePageLoad();" id="pageLoad"><button>Page Load</button></div>
+        <div onclick="fireInProgress();"" id="progress"><button>In Progress</button></div>
+        <div onclick="fireSuccess();" id="success"><button>Success</button></div>
+        <div onclick="fireFail();" id="fail"><button>Fail</button></div>
+    </div>
+</body>
+
+</html>
