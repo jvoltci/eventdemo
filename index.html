@@ -7,13 +7,24 @@
     <title>Parent</title>
 </head>
 <body>
-    <div style="height: 45vh; display: flex; justify-content: center; align-items: center; font-weight:  bold; font-size: 50px;">
-        <p id="write">Eduvanz (Parent)</p>
+    <div style="height: 30vh; display: flex; justify-content: center; align-items: center; font-weight:  bold; font-size: 50px;">
+        <p id="write">External (Parent)</p>
     </div>
-    <div style="height: 45vh; display:  flex; justify-content: center; width: 100%;">
-        <iframe height="100%" width="100%" src="https://extdev.tartanhq.com/?tkn=wmrzylwk&companyId=tartan"></iframe>
+    <div style="display: flex; justify-content: center; width: 100%;">
+        <form onsubmit="return submitE(event)">
+            <input style="width: 50%;" placeholder="Paste URL here..." />
+            <button>Go</button>
+        </form>
+    </div>
+    <div style="height: 60vh; display:  flex; justify-content: center; width: 100%;">
+        <iframe height="100%" width="50%" src="https://extdev.tartanhq.com/?tkn=wmrzylwk&companyId=tartan"></iframe>
     </div>
     <script>
+        const submitE = (e) => {
+            e.preventDefault();
+            document.querySelector('iframe').src  = document.querySelector('input').value;
+            return false;
+        }
         //window.addEventListener('message', (e) => alert(e.data))
         window.addEventListener('message', (e) => {
            alert(e.data.status)
