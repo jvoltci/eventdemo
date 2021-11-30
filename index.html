@@ -7,8 +7,9 @@
     <title>Parent</title>
 </head>
 <body>
-    <div style="height: 30vh; display: flex; justify-content: center; align-items: center; font-weight:  bold; font-size: 50px;">
-        <p id="write">External (Parent)</p>
+    <div style="height: 30vh; display: flex; flex-direction: column;; justify-content: center; align-items: center;">
+        <p>Iframe inside status: <strong id="stat"></strong></p>
+        <p style="font-weight:  bold; font-size: 50px;" id="write">External (Parent)</p>
     </div>
     <div style="display: flex; justify-content: center; width: 100%;">
         <form onsubmit="return submitE(event)">
@@ -27,7 +28,8 @@
         }
         //window.addEventListener('message', (e) => alert(e.data))
         window.addEventListener('message', (e) => {
-           alert(e.data.status)
+            document.querySelector('#stat').innerHTML = e.data.status;
+           //alert(e.data.status)
         })
     </script>
 </body>
