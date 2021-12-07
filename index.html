@@ -8,7 +8,7 @@
 </head>
 <body>
     <div style="height: 30vh; display: flex; flex-direction: column;; justify-content: center; align-items: center;">
-        <p>Iframe inside status: <strong style="color: red;" id="stat"></strong></p>
+        <p>Iframe inside status: <strong id="stat"></strong></p>
         <p style="font-weight:  bold; font-size: 50px;" id="write">External (Parent)</p>
     </div>
     <div style="display: flex; justify-content: center; width: 100%;">
@@ -17,8 +17,8 @@
             <button>Go</button>
         </form>
     </div>
-    <div style="height: 812px; display:  flex; justify-content: center; width: 375px;">
-        <iframe height="812px" width="375px" src="https://external.tartanhq.com/?tkn=wmrzylwk&companyId=tartan"></iframe>
+    <div style="height: 60vh; display:  flex; justify-content: center; width: 100%;">
+        <iframe height="100%" width="50%" src="https://extdev.tartanhq.com/?tkn=wmrzylwk&companyId=tartan"></iframe>
     </div>
     <script>
         const submitE = (e) => {
