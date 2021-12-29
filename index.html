@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parent</title>
 </head>
+
 <body>
     <div style="height: 30vh; display: flex; flex-direction: column;; justify-content: center; align-items: center;">
-        <p>Iframe inside status: <strong style="color: blue;" id="stat"></strong></p>
-        <p style="font-weight:  bold; font-size: 50px;" id="write">External (Parent)</p>
+        <p style="font-weight:  bold; font-size: 30px;" id="write">External (Parent)</p>
+            <p>Iframe inside status: <strong style="color: blue;" id="stat"></strong></p>
     </div>
-    <div style="display: flex; justify-content: center; width: 100%;">
+    <div style="display: flex; justify-content: center; width: 100vw;">
         <form onsubmit="return submitE(event)">
-            <input style="width: 50%;" placeholder="Paste URL here..." />
+            <input style="width: 45vw;" placeholder="Paste URL here..." />
             <button>Go</button>
         </form>
     </div>
     <div style="height: 60vh; display:  flex; justify-content: center; width: 100%;">
-        <iframe height="100%" width="50%" src="https://extdev.tartanhq.com/?tkn=wmrzylwk&companyId=tartan"></iframe>
+        <iframe style="border: solid black 2px;" height="100%" width="50%"
+            src="https://extdev.tartanhq.com/?tkn=wmrzylwk&companyId=tartan"></iframe>
     </div>
     <script>
         const submitE = (e) => {
             e.preventDefault();
-            document.querySelector('iframe').src  = document.querySelector('input').value;
+            document.querySelector('iframe').src = document.querySelector('input').value;
             return false;
         }
         //window.addEventListener('message', (e) => alert(e.data))
         window.addEventListener('message', (e) => {
             document.querySelector('#stat').innerHTML = e.data.status;
-           //alert(e.data.status)
+            document.querySelector('#stat').style.color = colorize(e.data.status);
+            //alert(e.data.status)
         })
+        const colorize = (stat) => {
+            switch(stat) {
+                case 'LINK_EXPIRE':
+                    return 'red';
+                case 'PAGE_LOADED':
+                    return 'blue';
+                case 'IN_PROGRESS':
+                    return 'green';
+                case 'FAILED':
+                    return 'red';
+                case 'INCORRECT_CLOSE':
+                    return '#FF00FF';
+                case 'RETRY':
+                    return 'blue';
+                case 'SUCCESS_CLOSE':
+                    return 'violet';
+                case 'SUCCESS':
+                    return 'green';
+                default:
+                    return 'teal';
+            }
+        }
     </script>
 </body>
+
 </html>
